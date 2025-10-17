@@ -1,0 +1,130 @@
+$use: 'sass:color';
+@use "sass:color";
+
+// Variáveis
+$bg: #f6f8fb;
+$primary: #0b57d0;
+$muted: #6b7280;
+$card: #ffffff;
+$radius: 8px;
+$max-width: 980px;
+$gap: 1.25rem;
+$font-stack: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+// Reset simples
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+#root { min-height: 100vh; display: flex; flex-direction: column; }
+body {
+  margin: 0;
+  font-family: $font-stack;
+  background: $bg;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Layout container
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+// Header / Nav
+header {
+  background: linear-gradient(90deg, rgba(11,87,208,0.08), transparent);
+  border-bottom: 1px solid color.adjust($bg, $lightness: 6%);
+  /* header sticky: ocupa espaço no fluxo e fica preso no topo ao rolar
+     isso evita sobreposição do conteúdo e permite responsividade */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  /* valor padrão da altura do header — pode ser sobrescrito no media query */
+  --header-height: 64px;
+  .container { display: flex; align-items: center; justify-content: space-between; gap: $gap; padding-left: 1.25rem; padding-right: 1.25rem; }
+  h1 { margin: 0; font-size: 1.25rem; color: $primary; }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    li a {
+      text-decoration: none;
+      color: $muted;
+      padding: .4rem .6rem;
+      border-radius: 6px;
+      transition: all .15s ease;
+      &:hover { color: $primary; background: rgba(11,87,208,0.06); }
+    }
+  }
+}
+
+// Main content cards (inclui padding-top calculado para não ficar por baixo do header)
+main {
+  /* main usa o valor real de --header-height para evitar que conteúdo fique escondido */
+  padding-top: calc(var(--header-height) + 0.5rem);
+  padding-bottom: 2rem;
+  flex: 1 0 auto;
+  .card {
+    background: $card;
+    border-radius: $radius;
+    padding: 1.25rem;
+    box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+    margin-bottom: 1rem;
+  }
+  h2 { margin-top: 0; color: #0f172a; }
+  p { color: $muted; line-height: 1.6; }
+}
+
+// Contato específico
+.contato {
+  max-width: 720px;
+  a { color: $primary; text-decoration: none; }
+}
+
+// Produtos
+.produtos {
+  h2 { margin-bottom: .75rem; scroll-margin-top: calc(var(--header-height) + 0.5rem); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    align-items: start;
+  }
+  .produto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    img { width: 96px; height: 96px; object-fit: contain; margin-bottom: .75rem; }
+    .preco { font-weight: 600; color: $primary; }
+  }
+}
+
+// Footer
+footer {
+  padding: 1rem 0;
+  text-align: center;
+  color: $muted;
+  border-top: 1px solid color.adjust($bg, $lightness: 6%);
+  background: transparent;
+  margin-top: auto; // garante que o footer empurre para o final da página
+}
+
+// Responsivo
+@media (max-width: 640px) {
+  // em mobile, o header pode ficar mais alto quando o nav quebra em linhas
+  header { --header-height: 112px; }
+  header .container { flex-direction: column; align-items: flex-start; gap: .5rem; padding-left: .75rem; padding-right: .75rem; }
+  nav ul { flex-wrap: wrap; gap: .5rem; }
+}
+
+/* ajuste extra para telas muito pequenas (<=400px): aumentar ainda mais o header se necessário */
+@media (max-width: 400px) {
+  header { --header-height: 140px; }
+  main { padding-top: calc(var(--header-height) + 0.5rem); }
+  .produtos h2 { scroll-margin-top: calc(var(--header-height) + 0.5rem); }
+}
