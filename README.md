@@ -1,38 +1,40 @@
-# Aula 10 - Blog Vite + React
+# Blog de Produtos · React + Vite
 
-Projeto de exemplo criado durante a aula. Contém uma pequena SPA com rotas: Home, Sobre, Contato e Produtos.
+SPA de estudo com rotas para Home, Sobre, Blog, Produtos e Contato. Projeto desenvolvido durante o curso Full-Stack do SENAC para praticar componentização e roteamento no React.
 
-Quick start
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
+![React Router](https://img.shields.io/badge/React_Router-7-CA4245?logo=reactrouter&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![Sass](https://img.shields.io/badge/Sass-CC6699?logo=sass&logoColor=white)
 
-1. Instalar dependências
+## Conceitos praticados
 
-   npm install
+- Componentes funcionais e composição
+- Rotas com **React Router**
+- Estilização com **Sass** e variável CSS de altura do header atualizada com `ResizeObserver`
+- Lint com ESLint (flat config)
 
-2. Rodar em desenvolvimento
+## Como rodar
 
-   npm run dev
+```bash
+git clone https://github.com/pehtonetti/BlogProduto.git
+cd BlogProduto
+npm install
+npm run dev
+```
 
-3. Abrir no navegador
+Acesse `http://localhost:5173`.
 
-   http://localhost:5173 (ou porta alternativa caso 5173 esteja em uso)
+## Estrutura
 
-Notas
+```text
+src/
+├── components/   # Blog (rotas), Home, Sobre, Produto, Contato
+├── styles/       # main.scss
+├── App.jsx       # Layout e ajuste dinâmico do header
+└── main.jsx      # Ponto de entrada
+```
 
-- Este repositório foi configurado para usar SASS (`sass` foi adicionado como devDependency).
-- Se você quiser que eu crie o repositório no GitHub e faça o push, me envie a URL do repositório remoto ou permissão para criar um novo (posso usar o GitHub CLI, mas precisarei do token/permissão).
-# React + Vite
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Pedro Tonetti** · [Portfólio](https://pehtonetti.github.io/portifolio/)
